@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/google_calendar_credentials.json
+data/google_calendar_token.json
+data/gmail_token.json
+data/event_reminder_state.json
