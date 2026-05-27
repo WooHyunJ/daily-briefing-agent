@@ -65,7 +65,7 @@ class BriefingService:
 
         if context.daily_checkin:
             if context.daily_checkin.sleep_hours is not None and context.daily_checkin.sleep_hours < 6:
-                risks.append("수면 시간이 짧아 집중 작업을 오전 초반에 배치하는 편이 좋습니다.")
+                risks.append("수면 시간이 짧아 집중 작업은 오전 초반에 배치하는 편이 좋습니다.")
             if context.daily_checkin.energy_level is not None and context.daily_checkin.energy_level <= 2:
                 energy_strategy.append("에너지가 낮으니 회의 준비와 짧은 처리 업무 위주로 하루를 작게 나누세요.")
             if context.daily_checkin.focus_capacity:
@@ -84,10 +84,10 @@ class BriefingService:
             weather_and_commute.append(context.commute_summary)
 
         if context.transit_updates:
-            suggested_actions.append("출근 전 지하철 도착정보를 확인하세요.")
+            suggested_actions.append("출근 전 지하철 도착 정보를 확인하세요.")
 
         if context.email_digest:
-            suggested_actions.append("[공지] 메일이 있는지 먼저 확인하세요.")
+            suggested_actions.append("중요 메일이 있는지 먼저 확인하세요.")
 
         if sorted_todos:
             first_todo = sorted_todos[0]
@@ -107,11 +107,11 @@ class BriefingService:
             priorities=priorities or ["오늘 처리할 핵심 작업 하나를 먼저 정하세요."],
             today_schedule=today_schedule or ["오늘 등록된 일정이 없습니다."],
             upcoming_schedule=upcoming_schedule or ["다가오는 일정이 없습니다."],
-            important_emails=context.email_digest or ["읽지 않은 [공지] 메일이 없습니다."],
+            important_emails=context.email_digest or ["읽지 않은 중요 메일이 없습니다."],
             schedule_strategy=schedule_strategy,
             energy_strategy=energy_strategy or ["집중이 잘 되는 시간대에 가장 중요한 작업을 배치하세요."],
             weather_and_commute=weather_and_commute or ["외출 전 날씨와 이동 시간을 확인하세요."],
-            transit_updates=context.transit_updates or ["실시간 지하철 도착정보가 설정되지 않았습니다."],
+            transit_updates=context.transit_updates or ["실시간 지하철 도착 정보가 설정되지 않았습니다."],
             risks=risks,
             suggested_actions=suggested_actions or ["작게 시작할 수 있는 첫 행동 하나를 정하고 바로 진행하세요."],
         )

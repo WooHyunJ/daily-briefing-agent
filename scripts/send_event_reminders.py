@@ -47,7 +47,7 @@ def to_local_aware(value: datetime) -> datetime:
 def format_reminder(event, minutes_until: int) -> str:
     lines = [
         "*일정 리마인더*",
-        f"{event.start.strftime('%H:%M')} '{event.title}' 일정이 약 {minutes_until}분 뒤 시작됩니다.",
+        f"{event.start.strftime('%H:%M')} '{event.title}' 일정이 약 {minutes_until}분 뒤 시작합니다.",
     ]
     if event.location:
         lines.append(f"장소: {event.location}")

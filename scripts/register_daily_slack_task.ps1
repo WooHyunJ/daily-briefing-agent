@@ -20,4 +20,4 @@ Register-ScheduledTask `
     -Description "매일 오전 7시 30분 Daily Briefing Agent 결과를 Slack으로 전송합니다." `
     -Force
 
-Write-Host "Daily Briefing Slack 작업이 등록되었습니다."
+Write-Host "Daily Briefing Slack 작업을 등록했습니다."

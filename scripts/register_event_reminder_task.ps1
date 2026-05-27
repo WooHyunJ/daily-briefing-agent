@@ -20,4 +20,4 @@ Register-ScheduledTask `
     -Description "일정 시작 전 Slack 리마인더를 전송합니다." `
     -Force
 
-Write-Host "Daily Briefing Event Reminders 작업이 등록되었습니다."
+Write-Host "Daily Briefing Event Reminders 작업을 등록했습니다."

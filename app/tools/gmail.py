@@ -15,7 +15,7 @@ from app.config import settings
 
 class GmailTool:
     name = "get_unread_notice_email_alerts"
-    description = "Gmail에서 읽지 않은 메일 중 [공지] 키워드가 있는 메일을 감지합니다."
+    description = "Gmail에서 읽지 않은 메일 중 지정 키워드가 있는 메일을 감지합니다."
 
     scopes = ["https://www.googleapis.com/auth/gmail.readonly"]
     auth_url = "https://accounts.google.com/o/oauth2/v2/auth"
@@ -63,10 +63,10 @@ class GmailTool:
 
     def _build_alerts(self, access_token: str, messages: list[dict]) -> list[str]:
         if not messages:
-            return ["읽지 않은 [공지] 메일이 없습니다."]
+            return ["읽지 않은 중요 메일이 없습니다."]
 
         headers = {"Authorization": f"Bearer {access_token}"}
-        alerts = [f"읽지 않은 [공지] 메일이 {len(messages)}건 있습니다."]
+        alerts = [f"읽지 않은 중요 메일이 {len(messages)}건 있습니다."]
 
         with httpx.Client(timeout=20) as client:
             for message in messages[: settings.gmail_max_messages]:

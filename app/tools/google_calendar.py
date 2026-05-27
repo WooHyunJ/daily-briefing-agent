@@ -16,7 +16,7 @@ from app.models.schemas import CalendarEvent
 
 class GoogleCalendarTool:
     name = "get_google_calendar_events"
-    description = "Google Calendar에서 지정한 날짜의 일정을 가져옵니다."
+    description = "Google Calendar에서 지정한 날짜 범위의 일정을 가져옵니다."
 
     scopes = ["https://www.googleapis.com/auth/calendar.readonly"]
     auth_url = "https://accounts.google.com/o/oauth2/v2/auth"

@@ -8,7 +8,7 @@ from app.models.schemas import UserProfile
 
 class SubwayArrivalTool:
     name = "get_subway_arrivals"
-    description = "서울 열린데이터광장 지하철 실시간 도착정보를 가져옵니다."
+    description = "서울 열린데이터광장의 지하철 실시간 도착 정보를 가져옵니다."
 
     base_url = "http://swopenAPI.seoul.go.kr/api/subway"
 
@@ -18,15 +18,15 @@ class SubwayArrivalTool:
 
         station = profile.commute_station
         if not station:
-            return ["출근역이 설정되지 않아 실시간 지하철 도착정보를 가져오지 않았습니다."]
+            return ["출근역이 설정되지 않아 실시간 지하철 도착 정보를 가져오지 않았습니다."]
 
         if not settings.seoul_subway_api_key:
-            return ["서울 지하철 API 키가 없어 실시간 도착정보를 가져오지 않았습니다."]
+            return ["서울 지하철 API 키가 없어 실시간 도착 정보를 가져오지 않았습니다."]
 
         try:
             return await self._fetch_arrivals(profile)
         except Exception:
-            return ["실시간 지하철 도착정보를 가져오지 못했습니다."]
+            return ["실시간 지하철 도착 정보를 가져오지 못했습니다."]
 
     async def _fetch_arrivals(self, profile: UserProfile) -> list[str]:
         station = profile.commute_station or ""
@@ -45,7 +45,7 @@ class SubwayArrivalTool:
         arrivals = data.get("realtimeArrivalList", [])
         filtered = self._filter_arrivals(arrivals, profile)
         if not filtered:
-            return [f"{station}역 실시간 도착정보가 없습니다."]
+            return [f"{station}역의 실시간 도착 정보가 없습니다."]
 
         result = []
         for item in filtered[:limit]:
